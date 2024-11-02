@@ -25,7 +25,11 @@ public class Veiculo {
 
     private String modelo;
     private String marca;
-    private String ano;
+    private String anoFabricacao;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status_aluguel")
+    private StatusAluguel statusAluguel = StatusAluguel.DISPONIVEL;
 
     @Enumerated(EnumType.STRING)
     private TipoVeiculo tipoVeiculo;
@@ -33,10 +37,13 @@ public class Veiculo {
     @OneToMany(mappedBy = "veiculo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Aluguel> alugueis = new ArrayList<>();
 
+
+    public enum StatusAluguel {
+        DISPONIVEL, ALUGADO
+    }
+
     public enum TipoVeiculo {
-        MOTO,
-        CARRO,
-        CAMINHAO
+        MOTO, CARRO, CAMINHAO
     }
 
 

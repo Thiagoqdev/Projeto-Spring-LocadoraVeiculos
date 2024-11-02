@@ -36,7 +36,7 @@ public class VeiculoService {
                 .map(veiculo -> {
                    veiculo.setMarca(veiculoAtualizado.getMarca());
                    veiculo.setModelo(veiculoAtualizado.getModelo());
-                   veiculo.setAno(veiculoAtualizado.getAno());
+                   veiculo.setAnoFabricacao(veiculoAtualizado.getAnoFabricacao());
                    return veiculoRepository.save(veiculo);
                         })
                 .orElse(null);

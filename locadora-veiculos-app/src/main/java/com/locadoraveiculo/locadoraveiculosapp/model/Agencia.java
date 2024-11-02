@@ -28,3 +28,4 @@ public class Agencia {
     @OneToMany(mappedBy = "agencia", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Aluguel> alugueis = new ArrayList<>();
 }
+
