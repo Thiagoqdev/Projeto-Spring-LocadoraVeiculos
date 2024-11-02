@@ -36,17 +36,17 @@ public class AluguelController {
     }
 
 
-    @GetMapping("/codigo")
-    public ResponseEntity<Aluguel>buscarAluguelPorCodigo(@PathVariable Long codigo){
-        return aluguelService.buscarAluguelPorcodigo(codigo)
+    @GetMapping("/aluguel_id")
+    public ResponseEntity<Aluguel>buscarAluguelPorCodigo(@PathVariable Long aluguel_id){
+        return aluguelService.buscarAluguelPorcodigo(aluguel_id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{codigo}")
-    public ResponseEntity<Aluguel> atualizarAluguel(@PathVariable Long id, @RequestBody Aluguel aluguel) {
+    @PutMapping("/{aluguel_id}")
+    public ResponseEntity<Aluguel> atualizarAluguel(@PathVariable Long veiculo_id, @RequestBody Aluguel aluguel) {
         try {
-            Aluguel aluguelAtualizado = aluguelService.atualizarAluguel(id, aluguel);
+            Aluguel aluguelAtualizado = aluguelService.atualizarAluguel(veiculo_id, aluguel);
             return ResponseEntity.ok(aluguelAtualizado);
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
@@ -55,15 +55,15 @@ public class AluguelController {
         }
     }
 
-    @DeleteMapping("/{codigo}")
-    public ResponseEntity<Void> removerAluguel(@PathVariable Long codigo){
-        aluguelService.deletarAluguel(codigo);
+    @DeleteMapping("/{aluguel_id}")
+    public ResponseEntity<Void> removerAluguel(@PathVariable Long aluguel_id){
+        aluguelService.deletarAluguel(aluguel_id);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/{codigo}/finalizar")
-    public ResponseEntity<Aluguel> finalizarAluguel(@PathVariable Long codigo){
-        Aluguel aluguelfinalizado = aluguelService.finalizarAluguel(codigo);
+    @PostMapping("/{aluguel_id}/finalizar")
+    public ResponseEntity<Aluguel> finalizarAluguel(@PathVariable Long aluguel_id){
+        Aluguel aluguelfinalizado = aluguelService.finalizarAluguel(aluguel_id);
         return ResponseEntity.ok(aluguelfinalizado);
     }
 

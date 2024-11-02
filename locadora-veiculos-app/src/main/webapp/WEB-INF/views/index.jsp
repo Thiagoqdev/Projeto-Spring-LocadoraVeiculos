@@ -59,7 +59,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" veiculo_id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Início</a>
@@ -92,7 +92,7 @@
     <div class="row">
         <!-- Reservation Form -->
         <div class="col-lg-8">
-            <div class="card" id="reserva">
+            <div class="card" veiculo_id="reserva">
                 <div class="card-header text-center py-3">
                     <h3 class="mb-0">Faça sua Reserva de Veículo</h3>
                 </div>
@@ -101,7 +101,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="pickupAgency" class="form-label">Agência de Retirada</label>
-                                <select class="form-select" id="pickupAgency" required>
+                                <select class="form-select" veiculo_id="pickupAgency" required>
                                     <option value="">Selecione...</option>
                                     <option value="1">Aeroporto Internacional</option>
                                     <option value="2">Centro da Cidade</option>
@@ -110,7 +110,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="vehicleType" class="form-label">Tipo de Veículo</label>
-                                <select class="form-select" id="vehicleType" required>
+                                <select class="form-select" veiculo_id="vehicleType" required>
                                     <option value="">Selecione...</option>
                                     <option value="economico">Econômico</option>
                                     <option value="intermediario">Intermediário</option>
@@ -123,18 +123,18 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="pickupDate" class="form-label">Data de Retirada</label>
-                                <input type="date" class="form-control" id="pickupDate" required>
+                                <input type="date" class="form-control" veiculo_id="pickupDate" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="returnDate" class="form-label">Data de Devolução</label>
-                                <input type="date" class="form-control" id="returnDate" required>
+                                <input type="date" class="form-control" veiculo_id="returnDate" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="returnAgency" class="form-label">Agência de Devolução</label>
-                                <select class="form-select" id="returnAgency" required>
+                                <select class="form-select" veiculo_id="returnAgency" required>
                                     <option value="">Selecione...</option>
                                     <option value="1">Aeroporto Internacional</option>
                                     <option value="2">Centro da Cidade</option>
@@ -143,7 +143,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="paymentMethod" class="form-label">Forma de Pagamento</label>
-                                <select class="form-select" id="paymentMethod" required>
+                                <select class="form-select" veiculo_id="paymentMethod" required>
                                     <option value="">Selecione...</option>
                                     <option value="credit">Cartão de Crédito</option>
                                     <option value="debit">Cartão de Débito</option>

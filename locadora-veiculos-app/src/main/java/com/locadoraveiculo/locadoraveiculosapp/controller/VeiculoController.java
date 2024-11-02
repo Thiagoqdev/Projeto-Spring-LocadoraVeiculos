@@ -35,29 +35,29 @@ public class VeiculoController {
         return ResponseEntity.ok(veiculos);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Veiculo> buscarVeiculoPorId(@PathVariable Long id) {
-        return veiculoService.buscarVeiculoPorId(id)
+    @GetMapping("/{veiculo_id}")
+    public ResponseEntity<Veiculo> buscarVeiculoPorId(@PathVariable Long veiculo_id) {
+        return veiculoService.buscarVeiculoPorId(veiculo_id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Veiculo> atualizarVeiculo(@PathVariable Long id, @RequestBody Veiculo veiculo) {
-        return veiculoService.buscarVeiculoPorId(id)
+    @PutMapping("/{veiculo_id}")
+    public ResponseEntity<Veiculo> atualizarVeiculo(@PathVariable Long veiculo_id, @RequestBody Veiculo veiculo) {
+        return veiculoService.buscarVeiculoPorId(veiculo_id)
                 .map(veiculoExistente -> {
-                    Veiculo veiculoAtulizado = veiculoService.atualizarVeiculo(id, veiculo);
+                    Veiculo veiculoAtulizado = veiculoService.atualizarVeiculo(veiculo_id, veiculo);
                     return ResponseEntity.ok(veiculoAtulizado);
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarVeiculo(@PathVariable Long id) {
-        return veiculoService.buscarVeiculoPorId(id)
+    @DeleteMapping("/{veiculo_id}")
+    public ResponseEntity<Void> deletarVeiculo(@PathVariable Long veiculo_id) {
+        return veiculoService.buscarVeiculoPorId(veiculo_id)
                 .map(veiculo -> {
-                    veiculoService.deletarVeiculo(id);
+                    veiculoService.deletarVeiculo(veiculo_id);
                     return ResponseEntity.ok().<Void>build();
                 })
                 .orElse(ResponseEntity.notFound().build());

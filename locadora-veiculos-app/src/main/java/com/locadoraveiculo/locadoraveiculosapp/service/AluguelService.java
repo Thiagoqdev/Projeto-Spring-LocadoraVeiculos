@@ -43,12 +43,12 @@ public class AluguelService {
         return aluguelRepository.findAll();
     }
 
-    public Optional<Aluguel> buscarAluguelPorcodigo(Long codigo) {
-        return aluguelRepository.findById(codigo);
+    public Optional<Aluguel> buscarAluguelPorcodigo(Long aluguel_id) {
+        return aluguelRepository.findById(aluguel_id);
     }
 
-    public Aluguel atualizarAluguel(Long codigo, Aluguel aluguelAtualizado) {
-        return aluguelRepository.findById(codigo)
+    public Aluguel atualizarAluguel(Long aluguel_id, Aluguel aluguelAtualizado) {
+        return aluguelRepository.findById(aluguel_id)
                 .map(aluguelExistente -> {
                     aluguelExistente.setValorCobrado(aluguelAtualizado.getValorCobrado());
                     aluguelExistente.setDataInicio(aluguelAtualizado.getDataInicio());
@@ -82,26 +82,26 @@ public class AluguelService {
 
                     return aluguelRepository.save(aluguelExistente);
                 })
-                .orElseThrow(() -> new EntityNotFoundException("Aluguel não encontrado com id: " + codigo));
+                .orElseThrow(() -> new EntityNotFoundException("Aluguel não encontrado com veiculo_id: " + aluguel_id));
     }
 
     @Transactional
-    public void deletarAluguel(Long codigo) {
-        Aluguel aluguel = aluguelRepository.findById(codigo)
-                .orElseThrow(() -> new EntityNotFoundException("Aluguel nao encontrado" + codigo));
+    public void deletarAluguel(Long aluguel_id) {
+        Aluguel aluguel = aluguelRepository.findById(aluguel_id)
+                .orElseThrow(() -> new EntityNotFoundException("Aluguel nao encontrado" + aluguel_id));
 
         Veiculo veiculo = aluguel.getVeiculo();
         if (veiculo != null) {
             veiculo.setStatusAluguel(Veiculo.StatusAluguel.DISPONIVEL);
             veiculoRepository.save(veiculo);
         }
-        aluguelRepository.deleteById(codigo);
+        aluguelRepository.deleteById(aluguel_id);
     }
 
 
     @Transactional
-    public Aluguel finalizarAluguel(Long codigo) {
-        return aluguelRepository.findById(codigo)
+    public Aluguel finalizarAluguel(Long aluguel_id) {
+        return aluguelRepository.findById(aluguel_id)
                 .map(aluguel -> {
                     aluguel.setDataFim(new Date());
                     Veiculo veiculo = aluguel.getVeiculo();
@@ -111,7 +111,7 @@ public class AluguelService {
                     }
                     return aluguelRepository.save(aluguel);
                 })
-                .orElseThrow(() -> new EntityNotFoundException("Aluguel nao encontrado com id" + codigo));
+                .orElseThrow(() -> new EntityNotFoundException("Aluguel nao encontrado com veiculo_id" + aluguel_id));
     }
 
 

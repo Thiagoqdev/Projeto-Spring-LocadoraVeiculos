@@ -20,7 +20,7 @@ public class Aluguel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigo_agencia;
+    private Long aluguel_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "numeroAgencia")

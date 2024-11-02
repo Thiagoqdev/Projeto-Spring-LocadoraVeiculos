@@ -27,22 +27,22 @@ public class VeiculoService {
         return veiculoRepository.findAll();
     }
 
-    public Optional<Veiculo> buscarVeiculoPorId(Long id) {
-        return veiculoRepository.findById(id);
+    public Optional<Veiculo> buscarVeiculoPorId(Long veiculo_id) {
+        return veiculoRepository.findById(veiculo_id);
     }
 
-    public Veiculo atualizarVeiculo(Long id, Veiculo veiculoAtualizado) {
-        return veiculoRepository.findById(id)
+    public Veiculo atualizarVeiculo(Long veiculo_id, Veiculo veiculoAtualizado) {
+        return veiculoRepository.findById(veiculo_id)
                 .map(veiculo -> {
                    veiculo.setMarca(veiculoAtualizado.getMarca());
                    veiculo.setModelo(veiculoAtualizado.getModelo());
                    veiculo.setAnoFabricacao(veiculoAtualizado.getAnoFabricacao());
                    return veiculoRepository.save(veiculo);
                         })
-                .orElseThrow(() -> new RuntimeException("Veículo não encontrado com id: " + id));
+                .orElseThrow(() -> new RuntimeException("Veículo não encontrado com veiculo_id: " + veiculo_id));
     }
 
-    public void deletarVeiculo(Long id) {
-        veiculoRepository.deleteById(id);
+    public void deletarVeiculo(Long veiculo_id) {
+        veiculoRepository.deleteById(veiculo_id);
     }
 }
