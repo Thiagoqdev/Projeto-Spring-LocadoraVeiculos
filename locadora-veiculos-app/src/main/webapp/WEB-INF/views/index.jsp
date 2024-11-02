@@ -78,7 +78,7 @@
     </div>
 </nav>
 
-<!-- Hero Section -->
+
 <section class="hero-section text-center">
     <div class="container">
         <h1 class="display-4 mb-4">Alugue o Carro dos Seus Sonhos</h1>
@@ -87,7 +87,7 @@
     </div>
 </section>
 
-<!-- Main Content -->
+
 <div class="container my-5">
     <div class="row">
         <!-- Reservation Form -->
@@ -158,7 +158,7 @@
             </div>
         </div>
 
-        <!-- Features -->
+
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
@@ -222,7 +222,7 @@
     </div>
 </footer>
 
-<!-- Bootstrap JavaScript and dependencies -->
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
