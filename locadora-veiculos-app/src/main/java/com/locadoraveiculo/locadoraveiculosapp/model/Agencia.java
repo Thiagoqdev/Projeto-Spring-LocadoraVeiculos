@@ -1,8 +1,16 @@
 package com.locadoraveiculo.locadoraveiculosapp.model;
 
+
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name = "agencias")
 public class Agencia {
 
-    private String nomeAgencia;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int numeroAgencia;
-    private String categoria;
+    private String nomeAgencia;
+    private String enderecoAgencia;
 }
