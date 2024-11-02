@@ -2,15 +2,21 @@ package com.locadoraveiculo.locadoraveiculosapp.model;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "agencias")
 public class Agencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int numeroAgencia;
+    private Long numeroAgencia;
 
     private String nomeAgencia;
 

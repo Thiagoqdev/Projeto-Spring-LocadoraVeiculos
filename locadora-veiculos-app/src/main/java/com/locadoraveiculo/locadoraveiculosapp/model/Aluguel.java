@@ -2,7 +2,14 @@ package com.locadoraveiculo.locadoraveiculosapp.model;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "alugueis")
 public class Aluguel {
