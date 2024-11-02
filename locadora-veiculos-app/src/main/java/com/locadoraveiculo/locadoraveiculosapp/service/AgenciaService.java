@@ -27,18 +27,19 @@ public class AgenciaService {
         return agenciaRepository.findAll();
     }
 
-    public Optional<Agencia> buscarAgenciaPorCodigo(long numeroAgencia) {
+    public Optional<Agencia> buscarAgenciaPorCodigo(Long numeroAgencia) {
         return agenciaRepository.findById(numeroAgencia);
     }
 
-    public Agencia atualizarAgencia(Long numeroAgencia, Agencia agencia) {
+    public Agencia atualizarAgencia(Long numeroAgencia, Agencia agenciaAtualizada) {
         return agenciaRepository.findById(numeroAgencia)
-                .map(Agencia -> {
-                    agencia.setNomeAgencia(agencia.getNomeAgencia());
-                    agencia.setEnderecoAgencia(agencia.getEnderecoAgencia());
-                    return agenciaRepository.save(agencia);
+                .map(agenciaExistente -> {
+                    agenciaExistente.setNomeAgencia(agenciaAtualizada.getNomeAgencia());
+                    agenciaExistente.setEnderecoAgencia(agenciaAtualizada.getEnderecoAgencia());
+
+                    return agenciaRepository.save(agenciaExistente);
                 })
-                .orElse(null);
+                .orElseThrow(() -> new RuntimeException("Agência não encontrada com o número: " + numeroAgencia));
     }
 
     public void removerAgencia(Long numeroAgencia) {

@@ -43,27 +43,65 @@ public class AluguelService {
         return aluguelRepository.findAll();
     }
 
-    public Optional<Aluguel> buscarAluguelPorId(Long id) {
-        return aluguelRepository.findById(id);
+    public Optional<Aluguel> buscarAluguelPorcodigo(Long codigo) {
+        return aluguelRepository.findById(codigo);
+    }
+
+    public Aluguel atualizarAluguel(Long codigo, Aluguel aluguelAtualizado) {
+        return aluguelRepository.findById(codigo)
+                .map(aluguelExistente -> {
+                    aluguelExistente.setValorCobrado(aluguelAtualizado.getValorCobrado());
+                    aluguelExistente.setDataInicio(aluguelAtualizado.getDataInicio());
+                    aluguelExistente.setDataFim(aluguelAtualizado.getDataFim());
+                    aluguelExistente.setTipoPagamento(aluguelAtualizado.getTipoPagamento());
+
+                    // Verifica se o veículo foi alterado
+                    if (!aluguelExistente.getVeiculo().equals(aluguelAtualizado.getVeiculo())) {
+                        Veiculo veiculoAntigo = aluguelExistente.getVeiculo();
+                        Veiculo veiculoNovo = aluguelAtualizado.getVeiculo();
+
+                        // Libera o veículo antigo
+                        if (veiculoAntigo != null) {
+                            veiculoAntigo.setStatusAluguel(Veiculo.StatusAluguel.DISPONIVEL);
+                            veiculoRepository.save(veiculoAntigo);
+                        }
+
+                        // Verifica e atualiza o novo veículo
+                        if (veiculoNovo != null) {
+                            if (veiculoNovo.getStatusAluguel() == Veiculo.StatusAluguel.DISPONIVEL) {
+                                veiculoNovo.setStatusAluguel(Veiculo.StatusAluguel.ALUGADO);
+                                veiculoRepository.save(veiculoNovo);
+                                aluguelExistente.setVeiculo(veiculoNovo);
+                            } else {
+                                throw new IllegalStateException("Novo veículo não está disponível para aluguel.");
+                            }
+                        } else {
+                            throw new IllegalArgumentException("Veículo não pode ser nulo.");
+                        }
+                    }
+
+                    return aluguelRepository.save(aluguelExistente);
+                })
+                .orElseThrow(() -> new EntityNotFoundException("Aluguel não encontrado com id: " + codigo));
     }
 
     @Transactional
-    public void deletarAluguel(Long id) {
-        Aluguel aluguel = aluguelRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Aluguel nao encontrado" + id));
+    public void deletarAluguel(Long codigo) {
+        Aluguel aluguel = aluguelRepository.findById(codigo)
+                .orElseThrow(() -> new EntityNotFoundException("Aluguel nao encontrado" + codigo));
 
         Veiculo veiculo = aluguel.getVeiculo();
         if (veiculo != null) {
             veiculo.setStatusAluguel(Veiculo.StatusAluguel.DISPONIVEL);
             veiculoRepository.save(veiculo);
         }
-        aluguelRepository.deleteById(id);
+        aluguelRepository.deleteById(codigo);
     }
 
 
     @Transactional
-    public Aluguel finalizarAluguel(Long id) {
-        return aluguelRepository.findById(id)
+    public Aluguel finalizarAluguel(Long codigo) {
+        return aluguelRepository.findById(codigo)
                 .map(aluguel -> {
                     aluguel.setDataFim(new Date());
                     Veiculo veiculo = aluguel.getVeiculo();
@@ -73,7 +111,7 @@ public class AluguelService {
                     }
                     return aluguelRepository.save(aluguel);
                 })
-                .orElseThrow(() -> new EntityNotFoundException("Aluguel nao encontrado com id" + id));
+                .orElseThrow(() -> new EntityNotFoundException("Aluguel nao encontrado com id" + codigo));
     }
 
 
