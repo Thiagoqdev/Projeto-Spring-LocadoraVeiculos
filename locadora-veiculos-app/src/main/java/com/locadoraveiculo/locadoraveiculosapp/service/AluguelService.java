@@ -30,7 +30,7 @@ public class AluguelService {
     @Transactional
     public Aluguel CriarAluguel(Aluguel aluguel) {
         Veiculo veiculo = aluguel.getVeiculo();
-        if (veiculo == null && veiculo.getStatusAluguel() == Veiculo.StatusAluguel.DISPONIVEL) {
+        if (veiculo != null && veiculo.getStatusAluguel() == Veiculo.StatusAluguel.DISPONIVEL) {
             veiculo.setStatusAluguel(Veiculo.StatusAluguel.ALUGADO);
             veiculoRepository.save(veiculo);
             return aluguelRepository.save(aluguel);

@@ -18,7 +18,7 @@ public class Veiculo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long veiculo_id;
 
     @Column(unique = true)
     private String placa;
