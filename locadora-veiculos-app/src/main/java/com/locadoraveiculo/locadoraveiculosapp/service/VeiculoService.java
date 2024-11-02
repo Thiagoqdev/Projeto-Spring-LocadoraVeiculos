@@ -39,7 +39,7 @@ public class VeiculoService {
                    veiculo.setAnoFabricacao(veiculoAtualizado.getAnoFabricacao());
                    return veiculoRepository.save(veiculo);
                         })
-                .orElse(null);
+                .orElseThrow(() -> new RuntimeException("Veículo não encontrado com id: " + id));
     }
 
     public void deletarVeiculo(Long id) {
