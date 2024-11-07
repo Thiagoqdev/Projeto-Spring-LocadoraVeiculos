@@ -14,15 +14,17 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "agencias")
+@Table(name = "AGENCIAS")
 public class Agencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numeroAgencia;
 
+    @Column(name = "NOME_AGENCIA")
     private String nomeAgencia;
 
+    @Column(name = "ENDERECO_AGENCIA")
     private String enderecoAgencia;
 
     @OneToMany(mappedBy = "agencia", cascade = CascadeType.ALL, orphanRemoval = true)
