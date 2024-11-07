@@ -1,5 +1,6 @@
 package com.locadoraveiculo.locadoraveiculosapp.service;
 
+import com.locadoraveiculo.locadoraveiculosapp.mappers.AluguelMapper;
 import com.locadoraveiculo.locadoraveiculosapp.model.Aluguel;
 import com.locadoraveiculo.locadoraveiculosapp.model.Veiculo;
 import com.locadoraveiculo.locadoraveiculosapp.repository.AluguelRepository;
@@ -7,24 +8,25 @@ import com.locadoraveiculo.locadoraveiculosapp.repository.VeiculoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AluguelService {
 
-    private final AluguelRepository aluguelRepository;
-    private final VeiculoRepository veiculoRepository;
-
-
     @Autowired
-    public AluguelService(AluguelRepository aluguelRepository, VeiculoRepository veiculoRepository) {
-        this.aluguelRepository = aluguelRepository;
-        this.veiculoRepository = veiculoRepository;
-    }
+    private AluguelRepository aluguelRepository;
+    @Autowired
+    private VeiculoRepository veiculoRepository;
+    @Autowired
+    private AluguelMapper aluguelMapper;
 
 
     @Transactional
@@ -39,12 +41,14 @@ public class AluguelService {
         }
     }
 
-    public List<Aluguel> listarAluguels() {
-        return aluguelRepository.findAll();
+    public Page<Aluguel> listarAluguels(int pagina, int tamanho){
+        Pageable pageable = PageRequest.of(pagina, tamanho, Sort.by("aluguel_id").ascending());
+        return aluguelRepository.findAll(pageable);
     }
 
-    public Optional<Aluguel> buscarAluguelPorcodigo(Long aluguel_id) {
-        return aluguelRepository.findById(aluguel_id);
+    public Aluguel buscarAluguelPorcodigo(Long aluguel_id) {
+        return aluguelRepository.findById(aluguel_id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Aluguel com id " + aluguel_id + " não foi encontrado"));
     }
 
     public Aluguel atualizarAluguel(Long aluguel_id, Aluguel aluguelAtualizado) {
@@ -87,15 +91,8 @@ public class AluguelService {
 
     @Transactional
     public void deletarAluguel(Long aluguel_id) {
-        Aluguel aluguel = aluguelRepository.findById(aluguel_id)
-                .orElseThrow(() -> new EntityNotFoundException("Aluguel nao encontrado" + aluguel_id));
-
-        Veiculo veiculo = aluguel.getVeiculo();
-        if (veiculo != null) {
-            veiculo.setStatusAluguel(Veiculo.StatusAluguel.DISPONIVEL);
-            veiculoRepository.save(veiculo);
-        }
-        aluguelRepository.deleteById(aluguel_id);
+        Aluguel aluguelExistente = buscarAluguelPorcodigo(aluguel_id);
+        aluguelRepository.delete(aluguelExistente);
     }
 
 
@@ -115,16 +112,14 @@ public class AluguelService {
     }
 
 
-    public List<Aluguel> buscarAlugueisAtivos() {
-        return aluguelRepository.findAll().stream()
-                .filter(aluguel -> aluguel.getDataInicio() == null)
-                .toList();
+    public Page<Aluguel> buscarAlugueisAtivos(int pagina, int tamanho){
+        Pageable pageable = PageRequest.of(pagina, tamanho, Sort.by("aluguel_id").ascending());
+        return aluguelRepository.findAll(pageable);
     }
 
-    public List<Aluguel> buscarAlugueisFinalizados() {
-        return aluguelRepository.findAll().stream()
-                .filter(aluguel -> aluguel.getDataFim() != null)
-                .toList();
+    public Page<Aluguel> buscarAlugueisFinalizados(int pagina, int tamanho){
+        Pageable pageable = PageRequest.of(pagina, tamanho, Sort.by("aluguel_id").ascending());
+        return aluguelRepository.findAll(pageable);
     }
 
 }
