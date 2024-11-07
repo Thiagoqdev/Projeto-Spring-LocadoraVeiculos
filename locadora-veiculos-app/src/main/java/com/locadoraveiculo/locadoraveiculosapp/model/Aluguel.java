@@ -30,15 +30,19 @@ public class Aluguel {
     @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
 
+    @Column(name = "VALOR_COBRADO")
     private BigDecimal valorCobrado;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "DATA_INICIO")
     private Date dataInicio;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "DATA_FIM")
     private Date dataFim;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "TIPO_PAGAMENTO")
     private TipoPagamento tipoPagamento;
 
     public enum TipoPagamento{
