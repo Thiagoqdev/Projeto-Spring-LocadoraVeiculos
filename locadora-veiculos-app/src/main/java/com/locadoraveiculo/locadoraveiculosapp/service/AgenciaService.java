@@ -1,48 +1,54 @@
 package com.locadoraveiculo.locadoraveiculosapp.service;
 
 
+import com.locadoraveiculo.locadoraveiculosapp.mappers.AgenciaMapper;
 import com.locadoraveiculo.locadoraveiculosapp.model.Agencia;
 import com.locadoraveiculo.locadoraveiculosapp.repository.AgenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class AgenciaService {
 
+    @Autowired
     private AgenciaRepository agenciaRepository;
 
     @Autowired
-    public AgenciaService(AgenciaRepository agenciaRepository) {
-        this.agenciaRepository = agenciaRepository;
-    }
+    private AgenciaMapper agenciaMapper;
 
     public Agencia criarAgencia(Agencia agencia) {
-        return agenciaRepository.save(agencia);
+        agenciaRepository.save(agencia);
+        return agencia;
     }
 
-    public List<Agencia> listarAgencias() {
-        return agenciaRepository.findAll();
+    public Page<Agencia> listarAgencias(int pagina, int tamanho){
+        Pageable pageable = PageRequest.of(pagina, tamanho, Sort.by("numeroAgencia").ascending());
+        return agenciaRepository.findAll(pageable);
     }
 
-    public Optional<Agencia> buscarAgenciaPorCodigo(Long numeroAgencia) {
-        return agenciaRepository.findById(numeroAgencia);
+    public Agencia buscarAgenciaPorId(Long numeroAgencia) {
+        return agenciaRepository.findById(numeroAgencia)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Agência com número " + numeroAgencia + " não foi encontrado"));
+    }
+
+    public Agencia buscarAgenciaPorCodigo(Long numeroAgencia) {
+        return buscarAgenciaPorId(numeroAgencia);
     }
 
     public Agencia atualizarAgencia(Long numeroAgencia, Agencia agenciaAtualizada) {
-        return agenciaRepository.findById(numeroAgencia)
-                .map(agenciaExistente -> {
-                    agenciaExistente.setNomeAgencia(agenciaAtualizada.getNomeAgencia());
-                    agenciaExistente.setEnderecoAgencia(agenciaAtualizada.getEnderecoAgencia());
-
-                    return agenciaRepository.save(agenciaExistente);
-                })
-                .orElseThrow(() -> new RuntimeException("Agência não encontrada com o número: " + numeroAgencia));
+        Agencia agenciaExistente = buscarAgenciaPorId(numeroAgencia);
+        agenciaMapper.atualizarAgencia(agenciaAtualizada, agenciaExistente);
+        return agenciaRepository.save(agenciaExistente);
     }
 
     public void removerAgencia(Long numeroAgencia) {
-        agenciaRepository.deleteById(numeroAgencia);
+        Agencia produtoExistente = buscarAgenciaPorId(numeroAgencia);
+        agenciaRepository.delete(produtoExistente);
     }
 }
