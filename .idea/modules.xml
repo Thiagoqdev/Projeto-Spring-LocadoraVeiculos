@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Projeto-Spring-LocadoraVeiculos.iml" filepath="$PROJECT_DIR$/.idea/Projeto-Spring-LocadoraVeiculos.iml" />
-      <module fileurl="file://$PROJECT_DIR$/locadora-veiculos-app/locadora-veiculos-app.iml" filepath="$PROJECT_DIR$/locadora-veiculos-app/locadora-veiculos-app.iml" />
     </modules>
   </component>
 </project>
