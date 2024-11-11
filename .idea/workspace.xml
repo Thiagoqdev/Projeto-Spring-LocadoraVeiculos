@@ -1,5 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f99afd40-218d-46f3-8231-be269fa4c185" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/webapp/WEB-INF/views/home.jsp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Thiagoqdev&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Thiagoqdev/Projeto-Spring-LocadoraVeiculos.git&quot;,
+    &quot;accountId&quot;: &quot;99c35053-3f1e-47b5-a341-b9a37cddfd7a&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2ofzSi4ZUuHCyB3Krl0tI88mEUd" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.LocadoraVeiculosAppApplication.executor": "Run",
+    "git-widget-placeholder": "develop-merges",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/programação/Santander-Coder/Spring/Projeto Final/Projeto-Spring-LocadoraVeiculos",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="LocadoraVeiculosAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -9,5 +83,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f99afd40-218d-46f3-8231-be269fa4c185" name="Changes" comment="" />
+      <created>1731275419395</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731275419395</updated>
+      <workItem from="1731275420452" duration="249000" />
+      <workItem from="1731275680009" duration="9092000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
