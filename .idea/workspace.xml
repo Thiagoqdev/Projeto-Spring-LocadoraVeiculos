@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f99afd40-218d-46f3-8231-be269fa4c185" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_11_2024_18_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_11_2024_18_51__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/controller/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/src/main/java/com/locadoraveiculo/locadoraveiculosapp/repository/UsuarioRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/locadora-veiculos-app/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locadora-veiculos-app/src/main/webapp/WEB-INF/views/home.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Record" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -62,7 +61,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.LocadoraVeiculosAppApplication.executor": "Run",
-    "git-widget-placeholder": "develop-merges",
+    "git-widget-placeholder": "new-security",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/programação/Santander-Coder/Spring/Projeto Final/Projeto-Spring-LocadoraVeiculos",
