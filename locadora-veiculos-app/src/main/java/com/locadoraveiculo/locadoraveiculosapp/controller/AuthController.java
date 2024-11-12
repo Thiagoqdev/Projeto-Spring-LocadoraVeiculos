@@ -7,9 +7,12 @@ import com.locadoraveiculo.locadoraveiculosapp.model.UserEntity;
 import com.locadoraveiculo.locadoraveiculosapp.service.TokenService;
 import com.locadoraveiculo.locadoraveiculosapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,28 +33,30 @@ public class AuthController {
     private TokenService tokenService;
 
 
+
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody UserDTO userDTO) {
-
-        var usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
-                userDTO.login(), userDTO.password());
-
-        var authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-
-        String token = tokenService.generateToken((UserEntity) authentication.getPrincipal());
-
-        return ResponseEntity.ok(new LoginResponseDTO(token));
-
+    public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
+        try {
+            var authToken = new UsernamePasswordAuthenticationToken(userDTO.login(), userDTO.password());
+            Authentication authentication = authenticationManager.authenticate(authToken);
+            String token = tokenService.generateToken((UserEntity) authentication.getPrincipal());
+            return ResponseEntity.ok(new LoginResponseDTO(token));
+        } catch (AuthenticationException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário inexistente ou senha inválida");
+        }
     }
+
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody RegisterDTO registerDTO) {
-
-        if (Objects.nonNull(userService.findByLogin(registerDTO.login()))) {
-            return ResponseEntity.badRequest().build();
+    public ResponseEntity<String> register(@RequestBody RegisterDTO registerDTO) {
+        try {
+            userService.saveUser(registerDTO);
+            return ResponseEntity.ok("Usuário registrado com sucesso");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erro ao registrar usuário: " + e.getMessage());
         }
-        userService.saveUser(registerDTO);
-        return ResponseEntity.ok("Usuário Registrado");
     }
+
+
 
 }
