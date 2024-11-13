@@ -27,46 +27,82 @@ Este projeto implementa uma API REST para uma locadora de veículos, fornecendo 
 
 ## Endpoints Principais
 
-
-Exe
-
 Abaixo estão os principais endpoints da API:
 
-| Recurso   | Método   | Descrição                |
-| :-------- | :------- | :------------------------- |
-| `/veiculos` | **GET** | Lista veículos com paginação |
-|  | **POST** | Cria um novo veículo |
-|  | **PUT** | Atualiza informações de um veículo |
-|  | **DELETE** | Remove um veículo |
+| Recurso     | Método     | Descrição                          |
+|:------------|:-----------|:-----------------------------------|
+| `/veiculos` | **GET**    | Lista veículos com paginação       |
+|             | **POST**   | Cria um novo veículo               |
+|             | **PUT**    | Atualiza informações de um veículo |
+|             | **DELETE** | Remove um veículo                  |
 
-| Recurso   | Método   | Descrição                |
-| :-------- | :------- | :------------------------- |
-| `/clientes` | **GET** | Lista clientes |
-|  | **POST** | Cria um novo cliente |
-|  | **PUT** | Atualiza dados de um cliente |
-|  | **DELETE** | Remove um cliente |
+| Recurso     | Método     | Descrição                    |
+|:------------|:-----------|:-----------------------------|
+| `/clientes` | **GET**    | Lista clientes               |
+|             | **POST**   | Cria um novo cliente         |
+|             | **PUT**    | Atualiza dados de um cliente |
+|             | **DELETE** | Remove um cliente            |
 
-| Recurso   | Método   | Descrição                |
-| :-------- | :------- | :------------------------- |
-| `/alugueis` | **GET** | Lista clientes |
-|  | **POST** | Realiza uma nova transação de aluguel |
-|  | **PUT** | Atualiza uma transação de aluguel |
-|  | **DELETE** | Cancela uma transação de aluguel |
+| Recurso     | Método     | Descrição                             |
+|:------------|:-----------|:--------------------------------------|
+| `/alugueis` | **GET**    | Lista clientes                        |
+|             | **POST**   | Realiza uma nova transação de aluguel |
+|             | **PUT**    | Atualiza uma transação de aluguel     |
+|             | **DELETE** | Cancela uma transação de aluguel      |
 
-| Recurso   | Método   | Descrição                |
-| :-------- | :------- | :------------------------- |
-| `/auth/register` | **POST** | criação de usuário |		
-| {
-|	"login": "usuario",
-|	"password": "senha123",
-|	"role": "ADMIN" // ou "USER"
-|}
-| `/auth/login` | **POST** | Autenticação de usuário e geração de token JWT |	
-|	|	{
-|	    "login": "usuario",
-|	    "password": "senha123"
-|	}
-|		
+| Recurso                       | Método   | Descrição                                      |
+|:------------------------------|:---------|:-----------------------------------------------|
+| `/auth/register`              | **POST** | criação de usuário                             |		
+|                               |          | {                                              |		
+|                               |          | "login": "usuario",                            |		
+|                               |          | "password": "senha123",                        |		
+|                               |          | "role": "ADMIN" // ou "USER"                   |		
+|                               |          | }                                              |		                            
+| `/auth/login`                 | **POST** | Autenticação de usuário e geração de token JWT |
+|                               |          | {                                              |	
+|                               |          | "login": "usuario",                            |	
+|                               |          | "password": "senha123"                         |
+|                               |          | }                                              |
+
+| Recurso              | Método   | Descrição                                             |
+|:---------------------|----------|:------------------------------------------------------|
+| `Agência (Agencia):` | **JSON** | {                                                     |
+|                      |          | "nomeAgencia": "Locadora Veloz",                      |
+|                      |          | "enderecoAgencia": "Av. Brasil, 1500 - São Paulo, SP" |
+|                      |          | }                                                     |
+
+| Recurso              | Método   | Descrição                            |
+|:---------------------|----------|:-------------------------------------|
+| `Usuário (Usuario):` | **JSON** | {                                    |
+|                      |          | "nome": "Carlos Eduardo Oliveira",   |
+|                      |          | "email": "carlos.eduardo@email.com", |
+|                      |          | "cpf": "12345678901",                |
+|                      |          | "senha": "SenhaForte@2024",          |
+|                      |          | "tipoUsuario": "CLIENTE"             |
+|                      |          | }                                    |
+
+| Recurso              | Método   | Descrição                      |
+|:---------------------|----------|:-------------------------------|
+| `Veículo (Veiculo):` | **JSON** | {                              |
+|                      |          | "placa": "ABC1D23",            |
+|                      |          | "modelo": "Gol",               |
+|                      |          | "marca": "Volkswagen",         |
+|                      |          | "anoFabricacao": "2022",       |
+|                      |          | "statusAluguel": "DISPONIVEL", |
+|                      |          | "tipoVeiculo": "CARRO"         |
+|                      |          | }                              |
+
+| Recurso              | Método   | Descrição                            |
+|:---------------------|----------|:-------------------------------------|
+| `Aluguel (Aluguel):` | **JSON** | {                                    |
+|                      |          | "agencia": {"numeroAgencia": 1},     |
+|                      |          | "veiculo": {"veiculo_id": 1},        |
+|                      |          | "valorCobrado": 350.75,              |
+|                      |          | "dataInicio": "2024-03-15T10:00:00", |
+|                      |          | "dataFim": "2024-03-20T18:00:00",    |
+|                      |          | "tipoPagamento": "CREDITO"           |
+|                      |          | }                                    |
+	
 ## Instalação e Configuração
 
 ### Pré-requisitos
