@@ -27,6 +27,9 @@ Este projeto implementa uma API REST para uma locadora de veículos, fornecendo 
 
 ## Endpoints Principais
 
+
+Exe
+
 Abaixo estão os principais endpoints da API:
 
 | Recurso   | Método   | Descrição                |
@@ -52,8 +55,18 @@ Abaixo estão os principais endpoints da API:
 
 | Recurso   | Método   | Descrição                |
 | :-------- | :------- | :------------------------- |
-| `/auth/login` | **POST** | Autenticação de usuário e geração de token JWT (se habilitado) |		
-
+| `/auth/register` | **POST** | criação de usuário |		
+| {
+|	"login": "usuario",
+|	"password": "senha123",
+|	"role": "ADMIN" // ou "USER"
+|}
+| `/auth/login` | **POST** | Autenticação de usuário e geração de token JWT |	
+|	|	{
+|	    "login": "usuario",
+|	    "password": "senha123"
+|	}
+|		
 ## Instalação e Configuração
 
 ### Pré-requisitos
